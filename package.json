@@ -1,0 +1,28 @@
+{
+  "name": "shalmal-js",
+  "version": "1.0.0",
+  "description": "practice work",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx webpack --config webpack.config.js && http-server" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shalmal90/JavaScript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shalmal90/JavaScript/issues"
+  },
+  "homepage": "https://github.com/shalmal90/JavaScript#readme",
+  "dependencies": {
+    "http-server": "^0.12.1",
+    "lodash": "^4.17.15",
+    "webpack": "^4.42.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.11"
+  }
+}
