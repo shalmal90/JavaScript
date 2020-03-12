@@ -1,4 +1,5 @@
-import _getText from './home.js'
+import _getText from './home.js';
+import './CSS/index.css';
 class _putText{
     constructor(textVal,putId){
         this.textVal = textVal
@@ -10,8 +11,7 @@ class _putText{
     }
     
 }
-var myText = new _putText('Hello World shalmal2','form');
+var myText = new _putText('Hello World shalmal5','form');
 myText.insertText();
 var gText = new _getText('something','form1');
 gText.insertText();
-//console.log(gText);
