@@ -1,0 +1,17 @@
+<head>
+    
+</head>
+<body>
+    <div id='form'></div><div id='form1'></div>
+    <form action="http://localhost:8080/src/action.html" method="post">
+        <input type="text" name="fname" required>
+        <input type="submit" value="Submit">
+      </form>
+    <script>
+        var versionUpdate = (new Date()).getTime();
+        var script = document.createElement("script");  
+        script.type = "text/javascript";  
+        script.src = "./main.js?v=" + versionUpdate;  
+        document.body.appendChild(script);  
+    </script>
+</body>

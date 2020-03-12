@@ -9,8 +9,11 @@ class _putText{
         var node = document.getElementById(this.putId);
         node.innerHTML = this.textVal;
     }
+    insertForm(){
+
+    }
 }
-var myText = new _putText('Hello World shalmal3','form');
+var myText = new _putText('Hello World shalmal','form');
 myText.insertText();
 var gText = new _getText('something','form1');
 gText.insertText();
