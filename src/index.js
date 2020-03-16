@@ -1,6 +1,8 @@
 import _getText from './home.js';
 import scroll from './scroll.js';
 import _list from './list.js';
+import content from './service.js';
+import tables from './tables.js';
 import './CSS/index.css';
 // class _putText{
 //     constructor(textVal,putId){
@@ -27,6 +29,8 @@ var validate = (function(){
     var gText;
     var scroll1;
     var list1;
+    var content1;
+    var table1;
     var validateForm = function(event){
         event.preventDefault()
         var value1 = document.getElementById('nameInput').value;
@@ -35,7 +39,6 @@ var validate = (function(){
         list1.insertItem(value1);
     };
     var checkLog = function(){
-        console.log('here again');
     };
     var insertText = function(textVal,putId){
         // var node = document.getElementById(putId);
@@ -56,6 +59,13 @@ var validate = (function(){
     var init = function(){
         list1 = new _list();
         scroll1 = new scroll();
+        content1 = new content();
+        table1 = new tables();
+        var data1 = content1.get();
+        data1.then((data)=>{
+            table1.setData(data);
+           // console.log(data);
+        });
         var nodeForm = document.getElementById('form3');
         insertText('Hello Shalmal','form');
         searchBar();
