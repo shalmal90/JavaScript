@@ -1,0 +1,27 @@
+<head>
+    
+</head>
+<body>
+    <div>
+    <div id='scroll'>
+        <div id='scrollBar'></div>
+    </div>
+    <div id='progressBar'></div>
+    <div id='form'></div><div id='form1'></div>
+    <form id='form3' target="_blank" method="post">
+        <input id='nameInput' type="text" name="fname" required>
+        <input type="submit" value="Submit">
+    </form>
+    <div id='accordian'></div>
+    <div id='toDo'></div>
+    <div id='table'></div>
+    </div>
+    <!-- <script src ="./src/test.js"> -->
+    <script>
+        var versionUpdate = (new Date()).getTime();
+        var script = document.createElement("script");  
+        script.type = "text/javascript";  
+        script.src = "./dist/main.js?v=" + versionUpdate;  
+        document.body.appendChild(script);
+    </script>
+</body>

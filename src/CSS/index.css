@@ -4,3 +4,11 @@
 #form1 {
     color: rgb(73, 53, 94);
 }
+#scroll {
+    background-color: rgb(73, 53, 94);
+}
+#scrollBar {
+    height: 15px;
+    width: 1%;
+    background-color: skyblue;
+}

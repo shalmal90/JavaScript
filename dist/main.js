@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"#form {\\r\\n    color: rgb(88, 6, 241);\\r\\n}\\r\\n#form1 {\\r\\n    color: rgb(73, 53, 94);\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/CSS/index.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"#form {\\r\\n    color: rgb(88, 6, 241);\\r\\n}\\r\\n#form1 {\\r\\n    color: rgb(73, 53, 94);\\r\\n}\\r\\n#scroll {\\r\\n    background-color: rgb(73, 53, 94);\\r\\n}\\r\\n#scrollBar {\\r\\n    height: 15px;\\r\\n    width: 1%;\\r\\n    background-color: skyblue;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/CSS/index.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -152,7 +152,31 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _home_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home.js */ \"./src/home.js\");\n/* harmony import */ var _CSS_index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CSS/index.css */ \"./src/CSS/index.css\");\n/* harmony import */ var _CSS_index_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_CSS_index_css__WEBPACK_IMPORTED_MODULE_1__);\n\r\n\r\nclass _putText{\r\n    constructor(textVal,putId){\r\n        this.textVal = textVal\r\n        this.putId = putId \r\n    };\r\n    insertText(){\r\n        var node = document.getElementById(this.putId);\r\n        node.innerHTML = this.textVal;\r\n    }\r\n    insertForm(){\r\n\r\n    }\r\n}\r\nvar myText = new _putText('Hello World shalmal','form');\r\nmyText.insertText();\r\nvar gText = new _home_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]('something','form1');\r\ngText.insertText();\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _home_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home.js */ \"./src/home.js\");\n/* harmony import */ var _scroll_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scroll.js */ \"./src/scroll.js\");\n/* harmony import */ var _list_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./list.js */ \"./src/list.js\");\n/* harmony import */ var _CSS_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CSS/index.css */ \"./src/CSS/index.css\");\n/* harmony import */ var _CSS_index_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_CSS_index_css__WEBPACK_IMPORTED_MODULE_3__);\n\r\n\r\n\r\n\r\n// class _putText{\r\n//     constructor(textVal,putId){\r\n//         this.textVal = textVal\r\n//         this.putId = putId \r\n//     };\r\n//     insertText(){\r\n//         var node = document.getElementById(this.putId);\r\n//         node.innerHTML = this.textVal;\r\n//     }\r\n//     validateForm(){\r\n//         console.log('here');\r\n//         //window.location.href = \"http://localhost:8080/action.html\";\r\n//     }\r\n// }\r\n\r\n// var myText = new _putText('Hello World shalmal','form');\r\n// myText.insertText();\r\n// var gText = new _getText('something','form1');\r\n// gText.insertText();\r\n// return myText;\r\n\r\nvar validate = (function(){\r\n    var gText;\r\n    var scroll1;\r\n    var list1;\r\n    var validateForm = function(event){\r\n        event.preventDefault()\r\n        var value1 = document.getElementById('nameInput').value;\r\n        scroll1.increaseWidth(25);\r\n        insertText('Validated','form1');\r\n        list1.insertItem(value1);\r\n    };\r\n    var checkLog = function(){\r\n        console.log('here again');\r\n    };\r\n    var insertText = function(textVal,putId){\r\n        // var node = document.getElementById(putId);\r\n        // node.innerHTML = textVal;\r\n        gText = new _home_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](textVal,putId);\r\n        gText.insertText();\r\n    };\r\n    var searchBar = function(){\r\n        let node = document.getElementById('toDo');\r\n        let holder = document.createElement('DIV');\r\n        holder.innerHTML = 'SEARCH';\r\n        let bar = document.createElement('INPUT');\r\n        bar.id = 'searchBar';\r\n        holder.appendChild(bar);\r\n        node.appendChild(holder);\r\n        list1.searchList();\r\n    };\r\n    var init = function(){\r\n        list1 = new _list_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"]();\r\n        scroll1 = new _scroll_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\r\n        var nodeForm = document.getElementById('form3');\r\n        insertText('Hello Shalmal','form');\r\n        searchBar();\r\n        nodeForm.addEventListener(\"submit\", validateForm,false);\r\n    }\r\n    return {\r\n        validateForm:validateForm,\r\n        checkLog:checkLog,\r\n        init:init(),\r\n    };\r\n})();\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/list.js":
+/*!*********************!*\
+  !*** ./src/list.js ***!
+  \*********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return _list; });\nclass _list{\r\n    constructor(){\r\n         this.first=true;\r\n         this.searchFilter = function(){\r\n           let val= document.getElementById('searchBar').value.toUpperCase();\r\n           let ul = document.getElementById(\"myUL\");\r\n           let li = ul.getElementsByTagName(\"li\");\r\n           let len = li.length;\r\n           var txtValue;\r\n           for(let i =0;i<len;i++){\r\n                console.log(li[i].innerText || li[i].innerHTML);\r\n                txtValue = li[i].innerText || li[i].innerHTML;\r\n                if (txtValue.toUpperCase().indexOf(val) > -1) {\r\n                    li[i].style.display = \"\";\r\n                } else {\r\n                    li[i].style.display = \"none\";\r\n                }\r\n           }\r\n        };\r\n    };\r\n    insertItem(putItem){\r\n        if(this.first){\r\n            let node = document.getElementById('toDo');\r\n            let unList = document.createElement('UL');\r\n            unList.id = 'myUL';\r\n            node.appendChild(unList);\r\n            this.first = false;\r\n        }\r\n        var unList = document.getElementById('myUL');\r\n        let unItem = document.createElement('LI');\r\n        unItem.innerText = putItem;\r\n        unList.appendChild (unItem);\r\n    };\r\n    searchList(){\r\n        var searchBar = document.getElementById('searchBar');\r\n        searchBar.addEventListener('keyup',this.searchFilter);\r\n    }\r\n    \r\n};\n\n//# sourceURL=webpack:///./src/list.js?");
+
+/***/ }),
+
+/***/ "./src/scroll.js":
+/*!***********************!*\
+  !*** ./src/scroll.js ***!
+  \***********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return scroll; });\nclass scroll{\r\n    constructor(){\r\n        this.val = 1;\r\n    };\r\n    increaseWidth(val){\r\n        var node = document.getElementById('scrollBar');\r\n        node.style.width = this.val+'%';\r\n        this.val = this.val+5;\r\n    } \r\n};\n\n//# sourceURL=webpack:///./src/scroll.js?");
 
 /***/ }),
 
