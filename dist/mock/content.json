@@ -4,7 +4,7 @@
 			"q1": {
 				"question": "1.Which one is correct team name in NBA?",
 				"options": [
-					"New York Bulls",
+					"Aew York Bulls",
 					"Los Angeles Kings",
 					"Golden State Warriros",
 					"Huston Rocket"
@@ -14,7 +14,7 @@
 			"q2": {
 				"question": "2.Which one is not correct team name in NBA?",
 				"options": [
-					"New York Bills",
+					"xkNew York Bills",
 					"Los Angeles Kongs",
 					"Gold State Warriros",
 					"Huston Rocket"
