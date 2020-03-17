@@ -3,7 +3,8 @@ import scroll from './scroll.js';
 import _list from './list.js';
 import content from './service.js';
 import tables from './tables.js';
-import linkList from './linkedList/linkedList.js';
+import linkList from './DS/linkedList.js';
+import tree from './DS/tree.js';
 import './CSS/index.css';
 // class _putText{
 //     constructor(textVal,putId){
@@ -64,6 +65,7 @@ var validate = (function(){
         table1 = new tables();
         var data1 = content1.get();
         linkList.start();
+        tree.start();
         data1.then((data)=>{
             table1.setData(data);
         });

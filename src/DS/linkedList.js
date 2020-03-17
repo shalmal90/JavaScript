@@ -23,7 +23,7 @@ var linkedList = (function(){
         var rec = function(node){
             if(node === null)return;
             rec(node.next);
-            console.log(node.val);
+            console.log('linkedList',node.val);
         }
         rec(node);
     };
@@ -58,7 +58,7 @@ var linkedList = (function(){
                 newListNode = newListNode.next;
             } 
         };
-        console.log(newList === sList);
+        //console.log(newList === sList);
         return newList;
     }
     var deleteItem = function(val){
@@ -76,7 +76,7 @@ var linkedList = (function(){
                 currentNode = currentNode.next;
             } 
         }
-        console.log(sList);
+        console.log('linkedList',sList);
         return sList;
     };
     var addItem = function(val){
@@ -94,7 +94,7 @@ var linkedList = (function(){
         }else{
             sList.head = newNode;
         }
-        console.log(sList);
+        console.log('linkedList',sList);
         return sList;
     };
     var start = function(){
