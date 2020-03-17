@@ -18,6 +18,15 @@ var linkedList = (function(){
         }
         return false;
     }
+    var printReversed=function(){
+        var node  = sList.head;
+        var rec = function(node){
+            if(node === null)return;
+            rec(node.next);
+            console.log(node.val);
+        }
+        rec(node);
+    };
     var cloneList = function(sList){
         let map = new Map();
         let currentNode = sList.head;
@@ -37,6 +46,18 @@ var linkedList = (function(){
             currentNode = currentNode.next;
             newListNode = newListNode.next;
         } 
+        currentNode = sList.head;
+        newListNode = newList.head;
+        if(currentNode.random){
+            while(currentNode){
+                let cNode = map.get(currentNode.random.val);
+                if(cNode){
+                    newListNode.random = cNode;
+                }
+                currentNode = currentNode.next;
+                newListNode = newListNode.next;
+            } 
+        };
         console.log(newList === sList);
         return newList;
     }
@@ -85,6 +106,7 @@ var linkedList = (function(){
         deleteItem(12);
         console.log(linkedListCycle(sList));
         console.log(cloneList(sList));
+        printReversed();
     };
     return {
         addItem:addItem,
