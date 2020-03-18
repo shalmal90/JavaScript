@@ -28,8 +28,42 @@ var tree = (function(){
         }else{
             tree.root = newNode;
         }
-        print();
+       // print();
         return tree;
+    };
+    var getHeight = function(){
+        var currentNode = tree.root;
+        var arr = [[currentNode,0]]; 
+        var height = 0;
+        while(arr.length){
+            var arrNode= arr.shift();
+            cNode = arrNode[0];
+            var cHeight = arrNode[1]+1;
+            //console.log('LEVEL',cNode.val,'height',cHeight);
+            if(cNode.left !==null){
+                arr.push([cNode.left,cHeight])
+            }
+            if(cNode.right !== null){
+                arr.push([cNode.right,cHeight]);
+            } 
+            height = cHeight;
+        }
+        console.log('tree: Height=',cHeight);
+        return height;
+    };
+    var levelOrder = function(){
+        var currentNode = tree.root;
+        var arr = [currentNode]; 
+        while(arr.length){
+            var cNode= arr.shift();
+            //console.log('LEVEL',cNode.val);
+            if(cNode.left !==null){
+                arr.push(cNode.left)
+            }
+            if(cNode.right !== null){
+                arr.push(cNode.right);
+            } 
+        }
     };
     var findNode = function(valu){
         var currentNode = tree.root;
@@ -53,7 +87,7 @@ var tree = (function(){
             return inorder(currentNode);
         };
         dNode = inorder(currentNode);
-        console.log(dNode);
+        console.log('tree:',dNode);
         return dNode;
     };
     var deleteNode = function(valu){
@@ -84,7 +118,7 @@ var tree = (function(){
                 newNode.val = null;
             }
         }
-        print();
+        //console.log(tree);
         return tree;
     };
     var print = function(){
@@ -98,7 +132,7 @@ var tree = (function(){
             }      
         }
         inorder(node);
-        console.log(arr);
+        console.log('tree:',arr);
     };
     var start = function(){
         insertNode(10);
@@ -115,6 +149,8 @@ var tree = (function(){
         deleteNode(14);
         deleteNode(6);
         print();
+        levelOrder();
+        getHeight();
         //deleteNode(723);
     };
     return{

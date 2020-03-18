@@ -1,9 +1,11 @@
 import _getText from './home.js';
+import _graph from './DS/graph.js';
 import scroll from './scroll.js';
 import _list from './list.js';
 import content from './service.js';
 import tables from './tables.js';
 import linkList from './DS/linkedList.js';
+import trie from './DS/trie.js';
 import tree from './DS/tree.js';
 import './CSS/index.css';
 // class _putText{
@@ -69,6 +71,9 @@ var validate = (function(){
         data1.then((data)=>{
             table1.setData(data);
         });
+        trie.init();
+        var gra  = new _graph();
+        gra.init();
         var nodeForm = document.getElementById('form3');
         insertText('Hello Shalmal','form');
         searchBar();
