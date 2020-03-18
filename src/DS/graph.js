@@ -18,6 +18,91 @@ export default class _graph{
                 console.log(key,'=>',val)
             });
         }  
+        this.bfs = (node)=>{
+            var len = this.vertices.length;
+            var visited = [];
+            for(var i = 0;i<len;i++){
+                var val = this.vertices[i];
+                visited[val]=false;
+            }
+            var q = [];
+            q.push(node);
+            while(q.length){
+                var cNode = q.shift();
+                var current = this.adjList.get(cNode);
+                console.log('bfs',cNode);
+                visited[cNode] = true;
+                current.forEach((ele)=>{
+                    if(visited[ele] === false)
+                    q.push(ele);
+                })
+               // console.log(visited);
+            }
+        }
+        this.path = (n1,n2)=>{
+            var newMap = new Map();
+            var len = this.vertices.length;
+            var visited = [];
+            for(var i = 0;i<len;i++){
+                var val = this.vertices[i];
+                visited[val]=false;
+            }
+            var q = [];
+            q.push(n1);
+            newMap.set(n1,null);
+            while(q.length){
+                var cNode = q.shift();
+                var current = this.adjList.get(cNode);
+               // console.log('path',cNode,current);
+                visited[cNode] = true;
+                current.forEach((ele)=>{
+                    if(!newMap.get(ele)){
+                        newMap.set(ele,cNode);
+                    }
+                    if(ele === n2){
+                       // console.log('found',n2,'in',cNode);
+                        return;
+                    }
+                    if(visited[ele] === false)
+                    q.push(ele);
+                })
+                // console.log(visited);
+            };
+
+            var obj = {};
+            var ans = [];
+            //var arr = [];
+            var val = n2;
+            while(!obj.hasOwnProperty(val)){
+                obj[val] = val;
+                ans.push(val);
+                val = newMap.get(val);
+            }
+            console.log('path',ans.reverse().join('->'));
+        }
+        this.dfs = (node)=>{
+            var that = this;
+            var len = this.vertices.length;
+            var visited = [];
+            for(var i = 0;i<len;i++){
+                var val = this.vertices[i];
+                visited[val]=false;
+            }
+           // var q = [];
+            //q.push(node);
+            function rec(cNode){
+                console.log('dfs',cNode);
+                if(cNode && !visited[cNode]){
+                    var current = that.adjList.get(cNode);
+                    visited[cNode] = true;
+                    current.forEach((ele)=>{
+                        if(visited[ele] === false)
+                        rec(ele)
+                    })
+                }
+            }
+            rec(node);
+        }
     }
     init(){
         this.addVertex('a');
@@ -32,5 +117,8 @@ export default class _graph{
         this.addEdge('b','c');
         this.addEdge('c','d');
         this.printGraph();
+        this.bfs('a');
+        this.dfs('a');
+        this.path('a','d');
     };
 };
