@@ -8,6 +8,10 @@ export default class _graph{
             a.push(v2);
             b.push(v1);
         };
+        this.addDirectionalEdge = function(v1,v2){
+            var a = this.adjList.get(v1);
+            a.push(v2);
+        };
         this.addVertex = function(v){
             this.vertices.push(v);
             this.adjList.set(v,[]);
@@ -102,6 +106,33 @@ export default class _graph{
                 }
             }
             rec(node);
+        };
+        this.buildPackages = ()=>{
+            var that = this;
+            var len = this.vertices.length;
+            var visited = [];
+            for(var i = 0;i<len;i++){
+                var val = this.vertices[i];
+                visited[val]=false;
+            }
+            // var q = [];
+            //q.push(node);
+            var max = 0;
+            this.adjList.forEach((key,val)=>{
+                rec(val);
+            });
+            function rec(cNode){
+                console.log('dependency',cNode);
+                if(cNode && !visited[cNode]){
+                    var current = that.adjList.get(cNode);
+                    visited[cNode] = true;
+                    current.forEach((ele)=>{
+                        if(visited[ele] === false)
+                        rec(ele)
+                    })
+                }
+            }
+           // 
         }
     }
     init(){
@@ -111,6 +142,14 @@ export default class _graph{
         this.addVertex('d');
         this.addVertex('e');
         this.addVertex('f');
+        // this.addDirectionalEdge('b','a');
+        // this.addDirectionalEdge('c','a');
+        // this.addDirectionalEdge('d','b');
+        // this.addDirectionalEdge('d','c');
+        // this.addDirectionalEdge('e','d');
+        // this.printGraph();
+        // this.buildPackages();
+
         this.addEdge('a','b');
         this.addEdge('a','e');
         this.addEdge('a','f');

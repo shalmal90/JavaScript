@@ -7,6 +7,11 @@ import tables from './tables.js';
 import linkList from './DS/linkedList.js';
 import trie from './DS/trie.js';
 import tree from './DS/tree.js';
+import array from './DS/arrays.js';
+import str from './DS/string.js';
+import stack from './DS/stack.js';
+import search from './searchSort/search.js';
+import sort from './searchSort/sort.js';
 import './CSS/index.css';
 // class _putText{
 //     constructor(textVal,putId){
@@ -78,6 +83,11 @@ var validate = (function(){
         insertText('Hello Shalmal','form');
         searchBar();
         nodeForm.addEventListener("submit", validateForm,false);
+        array.init();
+        str.init();
+        stack.init();
+        search.init();
+        sort.init();
     }
     return {
         validateForm:validateForm,

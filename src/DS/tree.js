@@ -90,6 +90,44 @@ var tree = (function(){
         console.log('tree:',dNode);
         return dNode;
     };
+    var findPath = function(v1,v2){
+        var newMap = new Map();
+        newMap.set(tree.root.val,tree.root);
+        var arr1=[];
+        var arr2=[];
+        var ans = tree.root.val;
+        //arr1.push(tree.root.val);
+       // arr2.push(tree.root.val);
+        function find(node,val,arr){
+            if(node === null)return false;
+            if(node.val === val){
+                newMap.set(node.val,node);
+                arr.push(node)
+                return true;
+            }else{
+                var left = find(node.left,val,arr);
+                var right = find(node.right,val,arr);
+                if(left || right){
+                    if(newMap.has(node.val)){
+                        console.log('found lca',node.val);
+                    }
+                    newMap.set(node.val,node);
+                    arr.push(node);
+                    return true;
+                }
+                return false;
+            }
+        }
+        find(tree.root,v1,arr1);
+        find(tree.root,v2,arr2);
+        console.log('stack',arr1,arr2);
+        if(arr1.length === 0 || arr2.length === 0){
+            console.log('Node not found');
+        }else{
+
+        }
+       return ans;
+    };
     var deleteNode = function(valu){
         var dNode = findNode(valu);
         if(dNode === null){
@@ -146,11 +184,12 @@ var tree = (function(){
         insertNode(18);
         insertNode(16);
         insertNode(17);
-        deleteNode(14);
-        deleteNode(6);
+        //deleteNode(14);
+        //deleteNode(6);
         print();
         levelOrder();
         getHeight();
+        findPath(7,9);
         //deleteNode(723);
     };
     return{
