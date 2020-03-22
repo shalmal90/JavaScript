@@ -2,23 +2,23 @@ var stack = (function(){
     var reverse = function(stk){
         var rec = function(st){
             let val = st.shift();
-            console.log('hold',val);
+            //console.log('hold',val);
             if(st.length>0){
                 rec(st);
             }
-            console.log('call',val);
+           // console.log('call',val);
             rec2(val);
         }
         var rec2 = function(val1){
             if(stk.length === 0){
-                console.log('pushed',val1);
+               // console.log('pushed',val1);
                 stk.unshift(val1)
                 return;
             }
             var temp  = stk.shift()
-            console.log('tempted',temp);
+           // console.log('tempted',temp);
             rec2(val1);
-            console.log('pushed',temp);
+            //console.log('pushed',temp);
             stk.unshift(temp);
 
         }
