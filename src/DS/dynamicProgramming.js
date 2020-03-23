@@ -9,7 +9,7 @@ export default class dynamic{
                 return;
             }
             if(this.obj.hasOwnProperty(n)){
-                return obj[n];
+                return this.obj[n];
             }
             if( n === 0){
                 this.obj[n] = 0;
