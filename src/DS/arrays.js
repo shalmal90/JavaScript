@@ -134,6 +134,41 @@ var array = (function(){
         }
         console.log('square',matri,count);
     };  
+    var change = function(n){
+        var arr = [100,50,20,10,5,1];
+        var obj = {
+            1:1,
+            5:5,
+            10:10,
+            20:20,
+            50:50,
+            100:100
+        };
+        var count = 0;
+        var min = Number.MAX_SAFE_INTEGER;
+        function changeRec(amount,count){
+            if(obj.hasOwnProperty(amount)){
+                count++;
+                if(count<min){
+                    min = count;
+                }
+                return min;
+            }else{
+                for(var i = 0;i<arr.length;i++){
+                    var val = amount - arr[i];
+                    if(val > 0){
+                        count++;
+                       var ans =  changeRec(val,count);
+                       //return ans;
+                        break;
+                    }
+                }
+            }
+        }
+        changeRec(n,count);
+        console.log('Min is --',min);
+        return min;
+    };
     var init = function(){
         median();
         var arr1 = [1,2,3];
@@ -144,6 +179,7 @@ var array = (function(){
         matProduct(matrix);
         var matr = [[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1]];
         squareMatrix(matr);
+        change(100);
     }
     return{
         init:init

@@ -123,22 +123,16 @@ export default class _graph{
                 if(hash[key]) {
                     return false;
                 }
-                
                 if(w === word.length) {
                     return true;
                 }
-                
                 if(i < 0 || i >= board.length || j < 0 || j >= board[0].length) {
                     return false;
-                }
-                
+                }   
                 var result = false;
-                
                 if(word[w] === board[i][j]) {
                     hash[key] = true;
-                    
                     result = dfs(board, word, w + 1, i+1, j) || dfs(board, word, w + 1, i-1, j) || dfs(board, word, w + 1, i, j+1) || dfs(board, word, w + 1, i, j-1);
-                    
                     hash[key] = false;
                 }
                 

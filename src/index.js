@@ -12,6 +12,7 @@ import str from './DS/string.js';
 import stack from './DS/stack.js';
 import search from './searchSort/search.js';
 import sort from './searchSort/sort.js';
+import dynamic from './DS/dynamicProgramming.js';
 import './CSS/index.css';
 // class _putText{
 //     constructor(textVal,putId){
@@ -88,6 +89,8 @@ var validate = (function(){
         stack.init();
         search.init();
         sort.init();
+        var dp = new dynamic();
+        dp.fibbonachi(5);
     }
     return {
         validateForm:validateForm,
