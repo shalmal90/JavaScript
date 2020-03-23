@@ -4,6 +4,7 @@ export default class dynamic{
         this.obj = {};
     }
     fibbonachi(val){
+        //var that = this;
         function recFib(n){
             if(n<0){
                 return;
@@ -19,9 +20,9 @@ export default class dynamic{
                 this.obj[n] = 1;
                 return 1;
             }
-            this.obj[n] =  fibbonachi(n-1) + fibbonachi(n-2);
+            this.obj[n] =  recFib(n-1) + recFib(n-2);
         }  
-        recFib(val);
+        recFib.call(this,val);
         return this.obj[val];  
     }; 
 }
