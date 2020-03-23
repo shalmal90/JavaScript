@@ -90,7 +90,7 @@ var validate = (function(){
         search.init();
         sort.init();
         var dp = new dynamic();
-        dp.fibbonachi(5);
+        dp.fibbonachi(7);
     }
     return {
         validateForm:validateForm,

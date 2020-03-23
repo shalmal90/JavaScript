@@ -1,28 +1,20 @@
 
 export default class dynamic{
     constructor(){
-        this.obj = {};
+       
     }
     fibbonachi(val){
-        //var that = this;
+        var obj = {};
         function recFib(n){
-            if(n<0){
-                return;
+            if( n === 0 || n === 1){
+                return n;
             }
-            if(this.obj.hasOwnProperty(n)){
-                return this.obj[n];
+            if(!obj.hasOwnProperty(n)){
+                obj[n] =  recFib(n-1) + recFib(n-2);   
             }
-            if( n === 0){
-                this.obj[n] = 0;
-                return 0;
-            }
-            if( n === 1){
-                this.obj[n] = 1;
-                return 1;
-            }
-            this.obj[n] =  recFib(n-1) + recFib(n-2);
+            return obj[n];
         }  
-        recFib.call(this,val);
-        return this.obj[val];  
+        recFib(val);
+        return obj[val];  
     }; 
 }
