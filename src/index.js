@@ -91,6 +91,10 @@ var validate = (function(){
         sort.init();
         var dp = new dynamic();
         dp.fibbonachi(7);
+        dp.knapsack();
+        dp.childSteps();
+        var gd = [[1,0,2,0,1],[0,0,0,0,0],[0,0,1,0,0]];
+        dp.shortestDistance(gd);
     }
     return {
         validateForm:validateForm,

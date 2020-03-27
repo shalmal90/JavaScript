@@ -84,6 +84,58 @@ var str = (function(){
         console.log('perm',obj);
 
     }
+    var isMatch = function(s, p) {
+        var cache = [];
+        var isStar = false;
+        for(let i=0;i<s.length;i++){
+            cache[i] = [];
+            for(let j=0;j<p.length;j++){
+                if(s[i]===p[j]){
+                    cache[i][j] = true;
+                }else if(p[j] === '?' || p[j] === '*'){
+                    if(p[j] === '*'){
+                        isStar = true;
+                    }
+                    cache[i][j] = true;
+                }else{
+                    cache[i][j] = false;
+                }
+                
+            }
+        }
+        console.log(cache);
+        var ind = 0;
+        var jind = 0;
+        if(cache[s.length-1][p.length-1]!== true){
+            return false;
+        }else if(!isStar && s.length !== p.length){
+            return false;
+        }else{
+            function recCheck(i,j){
+                if(i>s.length-1){
+                    return false;
+                }
+                if(j>p.length-1){
+                    return false;
+                }
+                if(i===s.length-1 && j === p.length-1 && cache[i][j] === true){
+                    return true;
+                }
+                 if(i===s.length-1 && j === p.length-1 && cache[i][j] === false){
+                    return false;
+                }
+                if(p[j] === '*'){
+                    var val  = recCheck(i+1,j) || recCheck(i+1,j+1) || recCheck(i,j+1);
+                    return val;
+                }else if(cache[i][j] === true){ 
+                     return recCheck(i+1,j+1);
+                }else if(cache[i][j] !== true){
+                    return false;
+                }
+            }
+            return recCheck(ind,jind);
+        } 
+    };
     var init = ()=>{
         var s = 'abc';
         var arr = ['a','aa','aaa','ab'];
@@ -93,6 +145,7 @@ var str = (function(){
         strCommon(str1,str2);
         console.log(compress('aaabbcccb'));
         allPerms('abc');
+        console.log('match is',isMatch('aa','*'));
     };
     return{
         init:init
