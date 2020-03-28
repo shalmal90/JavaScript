@@ -275,6 +275,33 @@ minWindow(s, t) {
     })
     return min?min:ansStr;
 };
+wordBreak(s, wordDict) {
+    var obj = {};
+    var ansObj = {};
+    wordDict.forEach((ele)=>{
+        if(!obj.hasOwnProperty(ele)){
+            obj[ele] = ele;
+        }
+    });
+    //console.log(obj);
+    function rec(str,ind){
+        console.log(str,ind);
+        var cStr = '';
+        if(ind === s.length){
+            return true;
+        }
+        for(var i=ind;i<s.length;i++){
+            cStr += s[i];
+            console.log(cStr,i);
+            if(obj.hasOwnProperty(cStr)){
+                console.log(cStr,i);
+                return rec(str.slice(i+1),i+1)
+            }
+        }
+        return false;
+    }
+    return rec(s,0)
+};
 }
 
 
