@@ -3,7 +3,7 @@ export default class dynamic{
     constructor(){
        
     }
-    fibbonachi(val){
+fibbonachi(val){
         var obj = {};
         function recFib(n){
             if( n === 0 || n === 1){
@@ -16,8 +16,8 @@ export default class dynamic{
         }  
         recFib(val);
         return obj[val];  
-    }; 
-    knapsack(){
+}; 
+knapsack(){
         var items = [1,2,3];
         var values = [10,20,30];
         var weights = 5;
@@ -43,8 +43,8 @@ export default class dynamic{
         recKnap(weights,i,maxValue);
         return maxValue;
 
-    };
-    childSteps(){
+};
+childSteps(){
         var arr = [1,2,3];
         var num = 5;
         var ans = 0;
@@ -72,8 +72,8 @@ export default class dynamic{
         }
         recChild(num,0);
         console.log(ans);
-    };
-    shortestDistance(grid) {
+};
+shortestDistance(grid) {
         var points=  [];
         function findDistance(p1,p2){
             var newMap = new Map();
@@ -182,7 +182,7 @@ export default class dynamic{
             }
         } 
         return distance;
-    };
+};
 canCross(stones){
     var obj = new Map();
     stones.forEach((ele)=>{
@@ -275,7 +275,7 @@ minWindow(s, t) {
     })
     return min?min:ansStr;
 };
- wordBreak(s, wordDict) {
+wordBreak(s, wordDict) {
     var obj = {};
     var visited = [];
     for(var i=0;i<s.length;i++){
