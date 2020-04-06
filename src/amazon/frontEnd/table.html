@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Using the XMLHttpRequest Object</h2>
+
+<div id="demo">
+<button type="button" onclick="loadXMLDoc()">Change Content</button>
+<div id="tableDemo">
+</div>
+
+<script>
+function loadXMLDoc(){
+console.log('here');
+  let mountains = [
+  { name: "Monte Falco", height: 1658, place: "Parco Foreste Casentinesi" },
+  { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi" },
+  { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi" },
+  { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi" },
+  { name: "Monte Amiata", height: 1738, place: "Siena" }
+];
+ function sortIt(val){
+            var table, rows, switching, i, x, y, shouldSwitch;
+            var n = val.target.getAttribute('name');
+            table = document.getElementById("myTable");
+            switching = true;
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                  shouldSwitch = false;
+                  x = rows[i].getElementsByTagName("TD")[n];
+                  y = rows[i + 1].getElementsByTagName("TD")[n];
+                  if(x&&y){
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch= true;
+                        break;
+                      }
+                  } 
+                }
+                if (shouldSwitch) {
+                  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                  switching = true;     
+                }
+            }
+        }
+function generateTableHead(table, data) {
+  let thead = table.createTHead();
+  let row = thead.insertRow();
+  let i=0;
+  for (let key of data) {
+    let th = document.createElement("th");
+    let text = document.createTextNode(key);
+    th.addEventListener('click',sortIt);
+    th.setAttribute('name',i);
+    i++;
+    th.appendChild(text);
+    row.appendChild(th);
+  }
+}
+
+function generateTable(table, data) {
+  for (let element of data) {
+    let row = table.insertRow();
+    for (key in element) {
+      let cell = row.insertCell();
+      let text = document.createTextNode(element[key]);
+      cell.appendChild(text);
+    }
+  }
+}
+var table1 = document.createElement('TABLE');
+table1.id = 'myTable';
+var node = document.getElementById('tableDemo');
+ node.appendChild(table1);
+let table = document.querySelector("table");
+let data = Object.keys(mountains[0]);
+generateTableHead(table, data);
+generateTable(table, mountains);
+  
+}
+</script>
+
+</body>
+</html>

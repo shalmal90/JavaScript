@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Using the XMLHttpRequest Object</h2>
+
+<div id="demo">
+<button type="button" onclick="loadXMLDoc()">Change Content</button>
+</div>
+
+<script>
+function loadXMLDoc() {
+ const promise = new Promise((resolve, reject) => {
+  const request = new XMLHttpRequest();
+  request.open('GET', 'https://jsonplaceholder.typicode.com/todos/1');
+  request.onload = () => {
+    if (request.status === 200) {
+    console.log(request.response);
+      resolve(request.response); // we got data here, so resolve the Promise
+    } else {
+      reject(Error(request.statusText)); // status is not 200 OK, so reject
+    }
+  };
+
+  request.onerror = () => {
+    reject(Error('Error fetching data.')); // error occurred, reject the  Promise
+  };
+
+  request.send(); // send the request
+});
+
+console.log('Asynchronous request made.');
+
+promise.then((data) => {
+  console.log('Got data! Promise fulfilled.',data);
+  var content = JSON.parse(data);
+  var node = document.getElementById('demo');
+  node.innerHTML = content.title;
+  
+}, (error) => {
+  console.log('Promise rejected.');
+  console.log(error.message);
+});
+}
+</script>
+
+</body>
+</html>
